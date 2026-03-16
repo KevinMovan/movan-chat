@@ -20,7 +20,8 @@ export async function GET(
 
   try {
     // 验证 token
-    const token = extractToken(request.headers.get('authorization'))
+    const authHeader = request.headers.get('authorization')
+    const token = extractToken(authHeader || undefined)
     if (!token) {
       return NextResponse.json(
         { error: '缺少认证 token' },
