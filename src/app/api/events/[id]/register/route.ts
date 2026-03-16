@@ -34,7 +34,7 @@ export async function POST(
     // 检查活动是否存在
     const { data: event } = await supabase
       .from('events')
-      .select('id, status')
+      .select('id, status, title')
       .eq('id', eventId)
       .single()
 
